@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
@@ -13,10 +14,6 @@ public class PersonTest {
 
     @Before
     public void setUp() {
-        this.person1 = new Person();
-        this.person2 = new Person();
-        this.wallet1 = new Wallet();
-        this.wallet2 = new Wallet();
         this.visa = new Card("Visa", 0.1, 100.0);
         this.masterCard = new Card("Mastercard", 0.05, 100.0);
         this.discover = new Card("Discover", 0.01, 100.0);
@@ -24,6 +21,8 @@ public class PersonTest {
 
     @Test
     public void testScenario1() {
+        Wallet wallet1 = new Wallet(new ArrayList<>());
+        Person person1 = new Person(new ArrayList<>());
 
         wallet1.addToWallet(visa);
         wallet1.addToWallet(masterCard);
@@ -39,6 +38,10 @@ public class PersonTest {
 
     @Test
     public void testScenario2() {
+        Wallet wallet1 = new Wallet(new ArrayList<>());
+        Wallet wallet2 = new Wallet(new ArrayList<>());
+        Person person1 = new Person(new ArrayList<>());
+
         wallet2.addToWallet(masterCard);
         wallet1.addToWallet(visa);
         wallet1.addToWallet(discover);
@@ -52,6 +55,11 @@ public class PersonTest {
 
     @Test
     public void testScenario3() {
+        Wallet wallet1 = new Wallet(new ArrayList<>());
+        Person person1 = new Person(new ArrayList<>());
+        Wallet wallet2 = new Wallet(new ArrayList<>());
+        Person person2 = new Person(new ArrayList<>());
+
         person1.addWallet(wallet1);
         wallet1.addToWallet(masterCard);
         wallet1.addToWallet(visa);
@@ -70,12 +78,16 @@ public class PersonTest {
 
     @Test(expected = NoSuchElementException.class)
     public void testRemoveFromWallet() {
+        Wallet wallet1 = new Wallet(new ArrayList<>());
         wallet1.addToWallet(discover);
         wallet1.removeFromWallet(visa);
     }
 
     @Test(expected = NoSuchElementException.class)
     public void testRemoveWalletFromPerson() {
+        Wallet wallet1 = new Wallet(new ArrayList<>());
+        Wallet wallet2 = new Wallet(new ArrayList<>());
+        Person person1 = new Person(new ArrayList<>());
         wallet1.addToWallet(discover);
         person1.addWallet(wallet1);
         person1.removeWallet(wallet2);

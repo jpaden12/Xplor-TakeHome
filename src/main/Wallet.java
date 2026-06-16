@@ -11,9 +11,10 @@ public class Wallet {
   /**
    * Wallet constructor with no parameters
    * Initializes the wallet with an empty list of cards
+   * @param cards A list of cards to initialize the wallet with
    */
-  public Wallet() {
-    cards = new ArrayList<>();
+  public Wallet(List<Card> cards) {
+    this.cards = cards;
   }
 
   /**

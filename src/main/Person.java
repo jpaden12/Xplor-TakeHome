@@ -10,10 +10,11 @@ public class Person {
 
     /**
      * Person constructor with no parameters
-     * Initializes the person with an empty list of wallets
+     * Initializes the person with a list of wallets
+     * @param wallets List of wallets to initialize the person with
      */
-    public Person() {
-        wallets = new ArrayList<>();
+    public Person(List<Wallet> wallets) {
+        this.wallets = wallets;
     }
 
     /**
